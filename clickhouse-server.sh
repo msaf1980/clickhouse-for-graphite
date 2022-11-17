@@ -21,7 +21,7 @@ stop)
     docker stop ${NAME}
     ;;
 restart)
-    docker stop ${NAME} || docker start ${NAME}
+    docker stop ${NAME} && docker start ${NAME}
     ;;
 create)
     mkdir ${DIR}/log ${DIR}/data
