@@ -44,6 +44,9 @@ drop)
     }
     rm -rf ${DIR}/log ${DIR}/data
     ;;
+client)
+    docker exec -ti ${NAME} clickhouse-client
+    ;;
 *)
     echo "Usage: $0 {start|stop|restart|create|drop}"
     exit 2
