@@ -44,11 +44,17 @@ drop)
     }
     rm -rf ${DIR}/log ${DIR}/data
     ;;
+force-drop)
+    docker inspect --format '{{.Name}}' ${NAME} 2>&1 >/dev/null && {
+        docker rm -f ${NAME} || exit 1
+    }
+    rm -rf ${DIR}/log ${DIR}/data
+    ;;
 client)
     docker exec -ti ${NAME} clickhouse-client
     ;;
 *)
-    echo "Usage: $0 {start|stop|restart|create|drop}"
+    echo "Usage: $0 {start|stop|restart|create|drop|force-drop}"
     exit 2
     ;;
 esac
