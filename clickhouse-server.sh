@@ -44,6 +44,12 @@ drop)
     }
     rm -rf ${DIR}/log ${DIR}/data
     ;;
+logs)
+    docker logs ${NAME}
+    ;;
+logfile)
+    docker exec -ti ${NAME} cat /var/log/clickhouse-server/clickhouse-server.log
+    ;;    
 force-drop)
     docker inspect --format '{{.Name}}' ${NAME} 2>&1 >/dev/null && {
         docker rm -f ${NAME} || exit 1
@@ -54,7 +60,7 @@ client)
     docker exec -ti ${NAME} clickhouse-client
     ;;
 *)
-    echo "Usage: $0 {start|stop|restart|create|drop|force-drop}"
+    echo "Usage: $0 {start|stop|restart|logs|logfile|create|drop|force-drop}"
     exit 2
     ;;
 esac
