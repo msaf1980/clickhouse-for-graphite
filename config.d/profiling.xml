@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<yandex>
+    <trace_log>
+        <database>system</database>
+        <table>trace_log</table>
+        <partition_by>toYYYYMM(event_date)</partition_by>
+        <flush_interval_milliseconds>7500</flush_interval_milliseconds>
+    </trace_log>
+    <total_memory_profiler_step>4194304</total_memory_profiler_step>
+    <total_memory_profiler_step>1</total_memory_profiler_step>
+    <total_memory_tracker_sample_probability>0.01</total_memory_tracker_sample_probability>
+</yandex>
