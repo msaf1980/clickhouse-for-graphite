@@ -59,8 +59,11 @@ force-drop)
 client)
     docker exec -ti ${NAME} clickhouse-client
     ;;
+client-multi)
+    docker exec -ti ${NAME} clickhouse-client --multiline
+    ;;
 *)
-    echo "Usage: $0 {start|stop|restart|logs|logfile|create|drop|force-drop}"
+    echo "Usage: $0 {start|stop|restart|logs|logfile|create|drop|force-drop|client|client-multi}"
     exit 2
     ;;
 esac
